@@ -28,3 +28,21 @@ def count_odd_digits_greater_than_3(n):
 if __name__ == "__main__":
     num2 = int(input("Введите число для задачи 1.2: "))
     print(f"Нечетных цифр > 3: {count_odd_digits_greater_than_3(num2)}")
+
+# Задание 1.3: Произведение таких делителей числа, сумма цифр которых меньше, чем сумма цифр исходного числа
+def get_sum_of_digits(num):
+    return sum(int(d) for d in str(abs(num)))
+
+def product_of_special_divisors(n):
+    n_abs = abs(n)
+    target_sum = get_sum_of_digits(n_abs)
+    product, found = 1, False
+    for i in range(1, n_abs + 1):
+        if n_abs % i == 0 and get_sum_of_digits(i) < target_sum:
+            product *= i
+            found = True
+    return product if found else 0
+
+if __name__ == "__main__":
+    num3 = int(input("Введите число для задачи 1.3: "))
+    print(f"Произведение делителей: {product_of_special_divisors(num3)}")
