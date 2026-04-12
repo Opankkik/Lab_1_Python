@@ -3,10 +3,15 @@ import re
 def count_russian_chars(s):
     return len(re.findall(r'[а-яА-ЯёЁ]', s))
 
+def is_latin_lower_palindrome(s):
+    letters = re.findall(r'[a-z]', s)
+    return letters == letters[::-1] and len(letters) > 0
+
 def main():
     while True:
-        c = input("\n1 - Русские символы, 0 - Выход\nВыбор: ")
+        c = input("\n1 - Русские символы, 2 - Палиндром, 0 - Выход\nВыбор: ")
         if c == '1': print("Русских символов:", count_russian_chars(input("Строка: ")))
+        elif c == '2': print("Палиндром:", is_latin_lower_palindrome(input("Строка: ")))
         elif c == '0': break
 
 if __name__ == "__main__": main()
