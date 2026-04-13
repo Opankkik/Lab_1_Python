@@ -9,3 +9,9 @@ if __name__ == "__main__":
         if not line: break
         lines_input.append(line)
     print("По длине:", sort_by_length(lines_input))
+
+def sort_by_word_count(lines):
+    return sorted(lines, key=lambda x: len(x.split()))
+
+if __name__ == "__main__":
+    print("По количеству слов:", sort_by_word_count(lines_input))
