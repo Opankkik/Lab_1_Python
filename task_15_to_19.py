@@ -7,13 +7,19 @@ def task_13_move_before_min(arr):
     min_idx = arr.index(min(arr))
     return arr[min_idx:] + arr[:min_idx]
 
+def task_25_max_in_interval(arr, a, b):
+    return max(arr[a:b+1]) if arr[a:b+1] else None
+
 def main():
     arr = list(map(int, input("Массив (через пробел): ").split()))
     while True:
-        c = input("\n1 - Элементы после последнего максимума, 2 - Элементы до минимального, 0-Выход\nВыбор: ")
+        c = input("\n1 - Элементы после последнего максимума, 2 - Элементы до минимального, 3 - Максимальный элемент в интервале, 0-Выход\nВыбор: ")
         if c in ['1', '2']:
             if c == '1': print("Результат:", task_1_after_last_max(arr))
             elif c == '2': print("Результат:", task_13_move_before_min(arr))
+        elif c == '3':
+            a, b = map(int, input("Интервал a и b (через пробел): ").split())
+            print("Результат:", task_25_max_in_interval(arr, a, b))
         elif c == '0': break
 
 if __name__ == "__main__": main()
